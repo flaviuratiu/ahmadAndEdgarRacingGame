@@ -1,10 +1,10 @@
 package org.fasttrackit;
 
-public class Car {
+public class Car extends AutoVehicle {
 
-    String name;
-    String color;
     int doorCount;
-    Driver driver;
 
+    public Car(Engine engine) {
+        super(engine);
+    }
 }
