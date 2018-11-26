@@ -6,35 +6,35 @@ package org.fasttrackit;
 public class App {
     public static void main(String[] args) {
         Engine truckEngine = new Engine();
-        truckEngine.manufacturer = "Renault";
+        truckEngine.setManufacturer("Renault");
         AutoVehicle truck = new AutoVehicle(truckEngine);
 
         Engine testEngine = new Engine();
-        testEngine.manufacturer = "BMW";
+        testEngine.setManufacturer("BMW");
 
         Car testCar = new Car(testEngine);
         System.out.println(testCar);
 
         Engine vwEngine = new Engine();
-        vwEngine.manufacturer = "Volkswagen";
+        vwEngine.setManufacturer("Volkswagen");
 
         Car firstCar = new Car(vwEngine);
-        firstCar.name = "Golf";
-        System.out.println(firstCar.name);
+        firstCar.setName("Golf");
+        System.out.println(firstCar.getName());
 
         Driver firstDriver = new Driver();
-        firstDriver.name = "Tony";
-        firstDriver.age = 39;
+        firstDriver.setName("Tony");
+        firstDriver.setAge(39);
 
-        firstCar.driver = firstDriver;
+        firstCar.setDriver(firstDriver);
 
         Engine renaultEngine = new Engine();
-        renaultEngine.manufacturer = "Renault";
+        renaultEngine.setManufacturer("Renault");
 
         Car car = new Car(renaultEngine);
-        car.name = "Dacia";
-        car.doorCount = 2;
-        System.out.println(car.name);
+        car.setName("    Dacia  fdasfdsaafdsa  ");
+        car.setDoorCount(2);
+        System.out.println(car.getName());
 
         double traveledDistance = car.accelerate(2313.321, 321312);
 
