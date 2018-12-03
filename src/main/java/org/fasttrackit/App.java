@@ -5,40 +5,18 @@ package org.fasttrackit;
  */
 public class App {
     public static void main(String[] args) {
-        Engine truckEngine = new Engine();
-        truckEngine.setManufacturer("Renault");
-        AutoVehicle truck = new AutoVehicle(truckEngine);
+        AutoVehicle vehicle = new AutoVehicle();
+        vehicle.setName("Test");
+        vehicle.setColor("Red");
 
-        Engine testEngine = new Engine();
-        testEngine.setManufacturer("BMW");
+        double traveledDistance = vehicle.accelerate(200, 5);
 
-        Car testCar = new Car(testEngine);
-        System.out.println(testCar);
+        System.out.println("Regular vehicle traveled distance: " + traveledDistance);
 
-        Engine vwEngine = new Engine();
-        vwEngine.setManufacturer("Volkswagen");
+        FakeVehicle fakeVehicle = new FakeVehicle();
+        double traveledDistance2 = fakeVehicle.accelerate(200, 5);
 
-        Car firstCar = new Car(vwEngine);
-        firstCar.setName("Golf");
-        System.out.println(firstCar.getName());
-
-        Driver firstDriver = new Driver();
-        firstDriver.setName("Tony");
-        firstDriver.setAge(39);
-
-        firstCar.setDriver(firstDriver);
-
-        Engine renaultEngine = new Engine();
-        renaultEngine.setManufacturer("Renault");
-
-        Car car = new Car(renaultEngine);
-        car.setName("    Dacia  fdasfdsaafdsa  ");
-        car.setDoorCount(2);
-        System.out.println(car.getName());
-
-        double traveledDistance = car.accelerate(2313.321, 321312);
-
-        System.out.println("Traveled distance: " + traveledDistance);
-
+        System.out.println("Fake vehicle traveled distance: " + traveledDistance2);
     }
+
 }
