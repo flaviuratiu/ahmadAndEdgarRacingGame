@@ -5,6 +5,8 @@ public class Vehicle {
     private String name;
     private String color;
     private Driver driver;
+    private double mileage;
+    private double fuelLevel;
 
     // useless method just to demonstrate co-variant return types and extending access in overridden method
     protected Vehicle returnMyself() {
@@ -15,7 +17,16 @@ public class Vehicle {
     protected double accelerate(double speed, double durationInHours) {
         // method body
         System.out.println("Acceleration speed:" + speed);
-        return speed * durationInHours;
+        double traveledDistance = speed * durationInHours;
+
+        double consumedFuel = mileage / traveledDistance * 100;
+
+        System.out.println("Consumed fuel: " + consumedFuel);
+
+        // this is the same as: fuelLevel = fuelLevel - consumedFuel;
+        fuelLevel -= consumedFuel;
+
+        return traveledDistance;
     }
 
     // Method overloading example
@@ -45,6 +56,22 @@ public class Vehicle {
 
     public void setDriver(Driver driver) {
         this.driver = driver;
+    }
+
+    public double getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(double mileage) {
+        this.mileage = mileage;
+    }
+
+    public double getFuelLevel() {
+        return fuelLevel;
+    }
+
+    public void setFuelLevel(double fuelLevel) {
+        this.fuelLevel = fuelLevel;
     }
 
     // Use Alt + Insert to override the toString() method
