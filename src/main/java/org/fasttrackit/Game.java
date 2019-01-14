@@ -28,7 +28,7 @@ public class Game {
     }
 
 
-    public void start() {
+    public void start() throws Exception {
 //        addCompetitor(0);
 //        addCompetitor(1);
 
@@ -83,7 +83,7 @@ public class Game {
         }
     }
 
-    private int getPlayerCountFromUser() {
+    private int getPlayerCountFromUser() throws Exception {
         System.out.println("Please enter the number of players... We beg of thee");
         // user's input from the keyboard
         Scanner scanner = new Scanner(System.in);
@@ -95,6 +95,9 @@ public class Game {
         } catch (NullPointerException exception) {
             // you can have as many catch blocks as you need
             System.out.println("Test");
+
+            // example of throwing a checked exception and declaring it in the method signature
+            throw new Exception("We don't tolerate NPEs");
         } catch (InputMismatchException exception) {
             System.out.println("Please enter a valid integer number.");
 
