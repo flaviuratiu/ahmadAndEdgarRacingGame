@@ -8,9 +8,10 @@ import java.util.Scanner;
 public class Game {
 
 //    private Vehicle[] competitors = new Vehicle[10];
-    
+
     private List<Vehicle> competitorsList = new ArrayList<>();
-    
+    private Track track;
+
 //    public void addCompetitor(int index) {
 //        Vehicle vehicle = new Vehicle();
 //        vehicle.setName("Golf");
@@ -40,6 +41,11 @@ public class Game {
 //        printWelcomeMessageFromList();
 //
 
+        // Default track but you can let the user decide what track to use
+        track = new Track();
+        track.setName("Default Track");
+        track.setLenght(100);
+
         int numberOfPlayers = getPlayerCountFromUser();
 
         for (int i = 0; i < numberOfPlayers; i++) {
@@ -48,6 +54,30 @@ public class Game {
 
         printWelcomeWithEnhancedFor();
 
+        boolean noWinnerYet = true;
+        int roundNumber = 1;
+
+//
+//        do {
+        // with do-while you are sure that the 'do' block is executed at least one time
+//            System.out.println("Message to be repeated");
+//        } while (noWinnerYet);
+
+        while (noWinnerYet) {
+            System.out.println("Round " + roundNumber);
+            for (Vehicle vehicle : competitorsList) {
+                double speed = getAccelerationSpeedFromUser();
+                vehicle.accelerate(speed);
+
+                if (vehicle.getTraveledDistance() >= track.getLenght()) {
+                    System.out.println("Congrats! Vehicle " + vehicle.getName() + " won the race!");
+                    noWinnerYet = false;
+                    break;
+                }
+            }
+
+            roundNumber++;
+        }
 
     }
 
@@ -113,5 +143,21 @@ public class Game {
         return userInput;
     }
 
+    private double getAccelerationSpeedFromUser() {
+        System.out.println("Please enter the acceleration speed.");
+        Scanner scanner = new Scanner(System.in);
+
+        double userInput;
+
+        try {
+            userInput = scanner.nextDouble();
+        } catch (Exception e) {
+            System.out.println("Please enter a valid decimal numbre.");
+            userInput = getAccelerationSpeedFromUser();
+        }
+
+        System.out.println("Your acceleration speed: " + userInput);
+        return userInput;
+    }
 
 }
